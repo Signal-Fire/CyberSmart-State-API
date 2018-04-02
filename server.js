@@ -10,9 +10,11 @@ app.use(bodyParser.urlencoded({
     extended : false
 }));
 
+app.use(bodyParser.json);
+
 app.use('/retrieve', RetrieveRoutes);
 app.use('/update', UpdateRoutes);
 
-app.listen(port, () => {
-    console.log('Listen up kids, the Iron Islands fleet consists of ' + configport + ' ships!');
+app.listen(config.port, () => {
+    console.log('Listen up kids, the Iron Islands fleet consists of ' + config.port + ' ships!');
 });
