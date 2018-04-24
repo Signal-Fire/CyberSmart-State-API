@@ -22,4 +22,4 @@ var StateSchema = new Schema({
     }
 });
 
-module.exports = conn.model('Device', DeviceSchema);
+module.exports = conn.model('Device', StateSchema);

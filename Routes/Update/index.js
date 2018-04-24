@@ -1,6 +1,7 @@
 /* jshint esversion: 6*/
 var route = require('express').Router(),
-    Updater = new(require('../../Handlers/Update'))();
+    Updater = new(require('../../Handlers/Update'))(),
+    Calculator = require('../../Handlers/Calculator');
 
 route.post('/state', function(req, res) {
     Updater.UpdateState(req.body).then(newState => {
