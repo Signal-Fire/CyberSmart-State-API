@@ -11,7 +11,8 @@ module.exports = class Update {
             if (!params.address || !params.state)
                 return reject("Unable to update device, no device or state given");
 
-            axios({
+            return resolve(params);
+            /*axios({
                 method : 'POST',
                 url : 'http://' + params.address + ':8000/api/state/changestate',
                 data : {
@@ -24,7 +25,7 @@ module.exports = class Update {
                 return resolve(response);
             }).catch(error => {
                 return reject(error);
-            });
+            });*/
         });
     }
 };
