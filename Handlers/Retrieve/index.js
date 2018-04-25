@@ -1,5 +1,4 @@
-/* jshint esversion : 6 */
-var request = require('request');
+var axios = require('axios');
 
 module.exports = class Retriever {
     constructor() {
@@ -8,14 +7,15 @@ module.exports = class Retriever {
 
     RetrieveState(device) {
         return new Promise(function(resolve, reject) {
-            request
-            .get('http://' + device.address + ':3000/api/state/get')
-            .on('response', response => {
+            axios({
+                method : 'GET',
+                url : 'http://' + device.address + ':8000/api/state/get'
+            }).then(res => {
                 if (response.statusCode !== 200) 
                     return reject("Unable to retrieve device information");
 
-                return resolve(response);
-            }).on('error', error => {
+                return resolve(res);
+            }).catch(error => {
                 return reject(error);
             });
         });
