@@ -1,6 +1,6 @@
 var axios = require('axios');
 
-module.exports = class Retriever {
+module.exports = new class Retriever {
     constructor() {
 
     }
@@ -19,5 +19,9 @@ module.exports = class Retriever {
                 return reject(error);
             });
         });
+    }
+
+    RetrieveDevices() {
+        
     }
 };
