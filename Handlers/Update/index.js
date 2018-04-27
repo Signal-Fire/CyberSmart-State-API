@@ -6,7 +6,6 @@ module.exports = class Update {
     }
 
     UpdateState(params) {
-        console.log(params);
         return new Promise(function(resolve, reject) {
             if (!params.address || !params.state)
                 return reject("Unable to update device, no device or state given");
