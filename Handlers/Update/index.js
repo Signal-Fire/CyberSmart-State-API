@@ -1,5 +1,4 @@
-/* jshint esversion: 6 */
-var request = require('request');
+var axios = require('axios');
 
 module.exports = class Update {
     constructor() {
@@ -9,20 +8,24 @@ module.exports = class Update {
     UpdateState(params) {
         console.log(params);
         return new Promise(function(resolve, reject) {
-            if (!params.ip || !params.state)
+            if (!params.address || !params.state)
                 return reject("Unable to update device, no device or state given");
 
-            request.post({ 
-                headers: {'content-type' : 'application/json'},
-                url: 'http://' + params.address + ':8000/api/state/changestate', 
-                body: JSON.stringify({state : params.state}) 
-            }, 
-            function optionalCallback(err, httpResponse, body) {
-                if (err) 
-                    return reject("Change state failed" + err);                  
+            return resolve(params);
+            /*axios({
+                method : 'POST',
+                url : 'http://' + params.address + ':8000/api/state/changestate',
+                data : {
+                    state : params.state
+                }
+            }).then(response => {
+                if (response.statusCode !== 200) 
+                    return reject("Unable to update device");
 
-                return resolve("Updated state");
-            });
+                return resolve(response);
+            }).catch(error => {
+                return reject(error);
+            });*/
         });
     }
 };
