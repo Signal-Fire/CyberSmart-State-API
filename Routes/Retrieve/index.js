@@ -1,6 +1,6 @@
 /* jshint esversion: 6*/
 var route = require('express').Router(),
-    Retriever = new(require('../../Handlers/Retrieve'))();
+    Retriever = require('../../Handlers/Retrieve');
 
 route.get('/status', function(req, res) {
     Retriever.RetrieveState(req.body).then(response => {
