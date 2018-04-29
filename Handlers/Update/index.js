@@ -6,8 +6,9 @@ module.exports = class Update {
     }
 
     UpdateState(params) {
+	console.log(params);
         return new Promise(function(resolve, reject) {
-            if (!params.address || !params.state)
+            if (!params.address)
                 return reject("Unable to update device, no device or state given");
 
             axios({
@@ -17,7 +18,7 @@ module.exports = class Update {
                     state : params.state
                 }
             }).then(response => {
-                if (response.statusCode !== 200) 
+                if (response.status !== 200)
                     return reject("Unable to update device");
 
                 return resolve(response);
