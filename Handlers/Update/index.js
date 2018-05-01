@@ -10,7 +10,7 @@ module.exports = class Update {
         return new Promise(function(resolve, reject) {
             if (!params.address)
                 return reject("Unable to update device, no device or state given");
-
+            
             axios({
                 method : 'POST',
                 url : 'http://' + params.address + ':8000/api/state/changestate',
